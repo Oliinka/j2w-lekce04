@@ -21,22 +21,27 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td><i class="las la-mars" style="color: blue;"></i></td>
-            <td>Medvídek</td>
-            <td>Pú</td>
-            <td>Stokorcový les</td>
-            <td><a href="/ucastnici/1" class="btn btn-primary">Detail</a></td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td><i class="las la-venus" style="color: red;"></i></td>
-            <td>Čarodějnice</td>
-            <td>Malá</td>
-            <td><em>neuvedeno</em></td>
-            <td><a href="/ucastnici/2" class="btn btn-primary">Detail</a></td>
-        </tr>
+        [#list seznamUcastniku as ucastnik]
+
+
+            <tr>
+                <td>${ucastnik?counter}</td>
+
+                <td>
+                    [#if ucastnik.gender =="žena"]
+                    <i class="las la-venus" style="color: pink;"></i></td>
+                    [#elseif ucastnik.gender=="muž"]
+                    <i class="las la-mars" style="color: blue;"></i></td>
+                    [#else ]
+                    <i style="color: black;">non</i></td>
+                    [/#if]
+                <td>${ucastnik.jmeno}</td>
+                <td>${ucastnik.prijmeni}</td>
+                <td>[#if ucastnik.bydliste??]${ucastnik.bydliste} [#else]<em><small style ="color: red;" >neuvedeno</small></em>[/#if]</td>
+                <td><a href="/ucastnici/detail/${ucastnik?index}" class="btn btn-primary">Detail</a></td>
+            </tr>
+        [/#list]
+
         </tbody>
     </table>
 </div>
