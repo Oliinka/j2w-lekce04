@@ -23,7 +23,7 @@ public class UcastniciController {
     @GetMapping("/")
     public ModelAndView seznam() {
         ModelAndView modelAndView = new ModelAndView("/ucastnici/index");
-        modelAndView.addObject("seznamUcastniku", List.of());
+        modelAndView.addObject("seznamUcastniku", seznamUcastniku);
         return modelAndView;
     }
 
